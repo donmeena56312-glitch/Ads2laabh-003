@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Index Notebook</title>
+<meta name="description" content="Free daily technical notes on Nifty, Bank Nifty and Sensex — educational commentary, not trading calls.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1358727252689294');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1358727252689294&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+  :root{
+    --paper: #F4F5F1;
+    --paper-line: rgba(28,35,51,0.06);
+    --ink: #1C2333;
+    --ink-soft: #545E73;
+    --card: #FFFFFF;
+    --rule: rgba(28,35,51,0.14);
+    --teal: #0F6B5C;
+    --gold: #93731F;
+    --cta-text: #F4F5F1;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #12161C;
+      --paper-line: rgba(236,237,231,0.05);
+      --ink: #ECEDE7;
+    --ink-soft: #A6AEC2;
+      --card: #1A2029;
+      --rule: rgba(236,237,231,0.14);
+      --teal: #4FAF9A;
+      --gold: #D9B559;
+      --cta-text: #12161C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #12161C;
+    --paper-line: rgba(236,237,231,0.05);
+    --ink: #ECEDE7;
+    --ink-soft: #A6AEC2;
+    --card: #1A2029;
+    --rule: rgba(236,237,231,0.14);
+    --teal: #4FAF9A;
+    --gold: #D9B559;
+    --cta-text: #12161C;
+  }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    background: var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg, var(--paper-line) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, var(--paper-line) 0 1px, transparent 1px 28px);
+    color: var(--ink);
+    font-family: "Lora", Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+  }
+  .page{
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 28px 22px 60px;
+  }
+  .topbar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand{
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .session{
+    display: flex;
+    gap: 14px;
+    font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .session span + span{
+    padding-left: 14px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .hero{ padding: 44px 0 30px; }
+  .hero h1{
+    font-size: clamp(26px, 5.2vw, 34px);
+    font-weight: 600;
+    line-height: 1.28;
+    margin: 0 0 16px;
+    max-width: 20ch;
+  }
+  .lede{
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 46ch;
+    margin: 0 0 26px;
+  }
+  .cta{
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cta-text);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 3px;
+  }
+  .cta-note{
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  h2{
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  section + section{ margin-top: 44px; }
+
+  .feature-row{
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .feature-row:last-child{ border-bottom: 1px solid var(--rule); }
+  .feature-row h3{
+    font-size: 15.5px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .feature-row p{
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 52ch;
+  }
+
+  .ledger{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-top: 14px;
+  }
+  .ledger-label{
+    margin: 0 0 14px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .ledger-head{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .ledger-head svg{ color: var(--teal); flex: none; }
+  .ledger-index{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .ledger-index b{
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .ledger-text{
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  .honest ul{
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .honest li{
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    max-width: 54ch;
+  }
+  .honest li:last-child{ border-bottom: 1px solid var(--rule); }
+  .honest li b{ color: var(--ink); font-weight: 600; }
+
+  .cta-repeat{
+    text-align: left;
+    padding: 6px 0 4px;
+  }
+
+  footer{
+    margin-top: 54px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .disclaimer{
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .cta{ transition: opacity .15s ease; }
+    .cta:hover{ opacity: .88; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <span class="brand">𝗖𝗔 𝗡𝗜𝗧𝗜𝗡 𝗠𝗨𝗥𝗔𝗥𝗞𝗔</span>
+    <span class="session">
+      <span>Pre-open 09:00 IST</span>
+      <span>Session 09:15–15:30 IST</span>
+    </span>
+  </div>
+
+  <section class="hero">
+    <h1>Daily notes on Nifty, Bank Nifty and Sensex — not calls to buy or sell.</h1>
+    <p class="lede">Free technical commentary for traders who want context on where the market stands, written for people who are still making their own decisions.</p>
+    <a class="cta" href="https://t.me/+6l-iw1VTmfpmMjk9">Join the channel on Telegram</a>
+    <p class="cta-note">Free to join. No paid tier for "real" signals.</p>
+  </section>
+
+  <section class="features">
+    <h2>What you'll get</h2>
+    <div class="feature-row">
+      <h3>Level notes</h3>
+      <p>Support and resistance on Nifty and Bank Nifty, with the reasoning behind them, not just numbers to copy.</p>
+    </div>
+    <div class="feature-row">
+      <h3>Weekly chart walkthroughs</h3>
+      <p>A look back at what price action actually did, and what it did or didn't confirm.</p>
+    </div>
+    <div class="feature-row">
+      <h3>Plain-language explainers</h3>
+      <p>What terms like open interest, VIX or a gap-down actually mean, spelled out rather than assumed.</p>
+    </div>
+    <div class="feature-row">
+      <h3>No tips, no calls</h3>
+      <p>Commentary only, so you build your own read on the market instead of borrowing someone else's.</p>
+    </div>
+  </section>
+
+  <section class="sample">
+    <h2>What a note looks like</h2>
+    <div class="ledger">
+      <p class="ledger-label">Example note — for illustration only, not today's market view</p>
+      <div class="ledger-head">
+        <svg width="46" height="24" viewBox="0 0 46 24" fill="none">
+          <polyline points="1,19 9,15 16,17 24,9 32,11 45,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="ledger-index">NIFTY 50 — near <b>24,900</b></p>
+      </div>
+      <p class="ledger-text">Holding above the 24,700 support seen last week. A close below that on volume would open room toward 24,400; staying above it keeps the short-term structure intact.</p>
+    </div>
+  </section>
+
+  <section class="honest">
+    <h2>What this channel isn't</h2>
+    <ul>
+      <li><b>Not investment advice.</b> Nothing posted here is a recommendation to buy or sell any security.</li>
+      <li><b>Not a registered adviser.</b> This channel is not registered with SEBI as a Research Analyst or Investment Adviser.</li>
+      <li><b>No "target hit" calls.</b> No buy-at-X-target-Y messages, no guaranteed returns, no paid premium group for the "real" tips.</li>
+    </ul>
+  </section>
+
+  <section class="cta-repeat">
+    <a class="cta" href="https://t.me/+6l-iw1VTmfpmMjk9">Join the channel on Telegram</a>
+  </section>
+
+  <footer>
+    <p class="disclaimer"> Ads Managed By @Ads2laabh This page and channel share educational market commentary only. Nothing here is investment advice, a recommendation, or a solicitation to buy or sell any security. The channel is not registered with SEBI as a Research Analyst or Investment Adviser. Markets carry risk of loss — consult a SEBI-registered adviser before making investment decisions.</p>
+  </footer>
+
+</div>
+</body>
+</html>
